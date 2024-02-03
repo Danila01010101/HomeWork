@@ -27,6 +27,4 @@ public class WorkerStateMachine : IStateSwitcher
     }
 
     public void Update() => _currentState.Update();
-
-    public void HandleInput() => _currentState.HandleInput();
 }

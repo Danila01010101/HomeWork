@@ -13,7 +13,7 @@ public class WalkingState : IState
 
     public void Enter()
     {
-        _worker.MoveToPoint(Vector3.zero);
+        _worker.Move(Vector3.zero);
     }
 
     public void Exit()

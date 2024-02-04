@@ -1,28 +1,23 @@
-using UnityEngine;
-
-public class WalkingState : IState
+public class WalkingState : BasicState, IState
 {
-    private readonly IStateSwitcher _switcher;
-    private Worker _worker;
-
-    public WalkingState(IStateSwitcher switcher, Worker worker)
+    public WalkingState(IStateSwitcher switcher, Worker worker) : base(switcher, worker)
     {
-        _switcher = switcher;
-        _worker = worker;
+
     }
 
     public void Enter()
     {
-        _worker.Move(Vector3.zero);
     }
 
     public void Exit()
     {
-        throw new System.NotImplementedException();
     }
 
     public void Update()
     {
-        throw new System.NotImplementedException();
+        if (Worker.WorkerMovement.HasReachedDestination())
+        {
+            Switcher.SwitchState<ThinkingState>();
+        }
     }
 }

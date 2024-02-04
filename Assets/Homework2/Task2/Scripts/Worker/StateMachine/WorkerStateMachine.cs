@@ -6,11 +6,14 @@ public class WorkerStateMachine : IStateSwitcher
     private List<IState> _states = new List<IState>();
     private IState _currentState;
 
-    public WorkerStateMachine()
+    public WorkerStateMachine(Worker worker, WorkerConfig workerConfig)
     {
         _states = new List<IState>()
         {
-
+            new ThinkingState(this, worker),
+            new WalkingState(this, worker),
+            new RestingState(this, worker, workerConfig.RestingSpeed),
+            new WorkingState(this, worker, workerConfig.FatigueRate)
         };
 
         _currentState = _states[0];

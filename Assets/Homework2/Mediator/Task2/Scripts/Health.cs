@@ -6,27 +6,30 @@ namespace Mediator
     public class Health
     {
         private int _maxHealth;
-        private int _amount;
+        private int _healthPoints;
+        private int _startHealth;
 
         public Action Death;
-        public Action HealthChanged;
-        public Action MaxHealthChanged;
+        public Action<int> HealthChanged;
+        public Action<int> MaxHealthChanged;
+        public int MaxHealth => _maxHealth;
 
         public Health(int startHealth)
         {
             _maxHealth = startHealth;
-            _amount = _maxHealth;
+            _healthPoints = _maxHealth;
+            _startHealth = _maxHealth;
         }
 
-        public int Amount
+        public int HealthPoints
         {
-            get => _amount;
+            get => _healthPoints;
             private set
             {
                 if (value < 0 || value > _maxHealth)
                     throw new ArgumentOutOfRangeException();
 
-                _amount = value;
+                _healthPoints = value;
             }
         }
 
@@ -35,17 +38,17 @@ namespace Mediator
             if (damage < 0)
                 throw new ArgumentException();
 
-            if (Amount - damage <= 0)
+            if (HealthPoints - damage <= 0)
             {
-                Amount = 0;
+                HealthPoints = 0;
                 Death?.Invoke();
             }
             else
             {
-                Amount -= damage;
+                HealthPoints -= damage;
             }
 
-            HealthChanged?.Invoke();
+            HealthChanged?.Invoke(HealthPoints);
         }
 
         public void RestoreHealth(int healingAmount)
@@ -53,16 +56,16 @@ namespace Mediator
             if (healingAmount < 0)
                 throw new ArgumentException();
 
-            if (Amount + healingAmount > _maxHealth)
+            if (HealthPoints + healingAmount > _maxHealth)
             {
-                Amount = _maxHealth;
+                HealthPoints = _maxHealth;
             }
             else
             {
-                Amount += healingAmount;
+                HealthPoints += healingAmount;
             }
 
-            HealthChanged?.Invoke();
+            HealthChanged?.Invoke(HealthPoints);
         }
 
         public void IncreaseMaxHealth(int value)
@@ -71,7 +74,16 @@ namespace Mediator
                 throw new ArgumentException();
 
             _maxHealth += value;
-            MaxHealthChanged?.Invoke();
+            MaxHealthChanged?.Invoke(_maxHealth);
+        }
+
+        public void Reset()
+        {
+            _maxHealth = _startHealth;
+            HealthPoints = _maxHealth;
+
+            HealthChanged?.Invoke(HealthPoints);
+            MaxHealthChanged?.Invoke(MaxHealth);
         }
     }
 }

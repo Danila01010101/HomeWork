@@ -1,15 +1,18 @@
 using System;
 using UnityEngine;
 
-public class LevelInput : MonoBehaviour
+namespace Assets.Homework3.Task2.Scripts
 {
-    public Action CButtonPressed;
-
-    private void Update()
+    public class LevelInput : MonoBehaviour
     {
-        if (Input.GetKeyDown(KeyCode.C))
+        public Action CButtonPressed;
+
+        private void Update()
         {
-            CButtonPressed?.Invoke();
+            if (Input.GetKeyDown(KeyCode.C))
+            {
+                CButtonPressed?.Invoke();
+            }
         }
     }
 }

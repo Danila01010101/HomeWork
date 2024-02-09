@@ -4,7 +4,7 @@ using Mediator;
 
 namespace Assets.Homework3.Task2.Scripts
 {
-    public class IconsSwitcher : MonoBehaviour
+    public class IconSwitcher : MonoBehaviour
     {
         private ShopIconFactory _shopIconFactory;
         private MenuIconFactory _menuIconFactory;
@@ -13,15 +13,16 @@ namespace Assets.Homework3.Task2.Scripts
 
         public enum LevelType { Menu, Shop }
 
-        public IconsSwitcher(ShopIconFactory shopIconFactory, MenuIconFactory menuIconFactory, Level level, LevelInput input)
+        public IconSwitcher(ShopIconFactory shopIconFactory, MenuIconFactory menuIconFactory, Level level, LevelInput input)
         {
             _shopIconFactory = shopIconFactory;
             _menuIconFactory = menuIconFactory;
             _level = level;
-            input.CButtonPressed += SwitchFabric;
+            input.CButtonPressed += SwitchIconsFabric;
+            SwitchIconsFabric();
         }
 
-        private void SwitchFabric()
+        private void SwitchIconsFabric()
         {
             switch (_currentLevel)
             {

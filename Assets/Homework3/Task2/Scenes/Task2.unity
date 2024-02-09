@@ -594,6 +594,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6293b6c3d7cc6694aa408b8880e169a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _levelInput: {fileID: 747557051}
+  _coinIcon: {fileID: 264041050}
+  _lightningIcon: {fileID: 356062076}
+  _shopIconFactory: {fileID: 11400000, guid: d67fe9e1230207244972778a841f66dd, type: 2}
+  _menuIconFactory: {fileID: 11400000, guid: bc571128dcc87cd4faf72aab595ac42e, type: 2}
 --- !u!1 &886639109
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 
@@ -8,7 +9,19 @@ namespace Assets.Homework3.Task2.Scripts
     {
         public override Sprite GetIcon(Icon type)
         {
-            throw new System.NotImplementedException();
+            switch (type)
+            {
+                case Icon.Coin:
+                    Debug.Log("иконка для меню изменена");
+                    return CoinIcon;
+
+                case Icon.Lightning:
+                    Debug.Log("иконка для меню изменена");
+                    return LightningIcon;
+
+                default:
+                    throw new ArgumentException();
+            }
         }
     }
 }

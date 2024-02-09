@@ -12,3 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca95aa52b2e0cfe48a68b10521b1dda4, type: 3}
   m_Name: MenuIconFactory
   m_EditorClassIdentifier: 
+  _lightningIcon: {fileID: 21300000, guid: ade1a554292d9f04aaeb61956cbf6d39, type: 3}
+  _coinIcon: {fileID: 21300000, guid: a7349697a3af46045991fda075498881, type: 3}

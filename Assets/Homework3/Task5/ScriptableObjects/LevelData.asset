@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56a5ba296226124459c763d0e83a5e00, type: 3}
+  m_Name: LevelData
+  m_EditorClassIdentifier: 
+  _orkStartStats: {fileID: 11400000, guid: 376612a6876cdcb44bd55ee356d2a343, type: 2}
+  _elfStartStats: {fileID: 11400000, guid: 1b1c8cec5ccc0a74e8a29eb2e14b400f, type: 2}
+  _humanStartStats: {fileID: 11400000, guid: 431853c4c47c3e94daacf61d6552d7d9, type: 2}
+  _thiefStats: {fileID: 11400000, guid: 19d93a9ac159fa945b07dd1403f654ac, type: 2}
+  _mageStats: {fileID: 11400000, guid: a5964fe5d01e4b14ea5b6507bffd1f53, type: 2}
+  _barbarianStats: {fileID: 11400000, guid: 9914a511f8026c44c942ab912dbaf352, type: 2}
+  _inteligenceStats: {fileID: 11400000, guid: 2a8a356343f9fd14ea1f43df6810f729, type: 2}
+  _strenghtStats: {fileID: 11400000, guid: f2f6cb7e0f9766542bede719f686c673, type: 2}
+  _agilityStartStats: {fileID: 11400000, guid: e09b0056ca43a9a4f85c178897e80418, type: 2}

@@ -1,8 +1,9 @@
+using System;
 using UnityEngine;
 
 namespace Assets.Homework4.Scripts
 {
-    public class MovementHandler
+    public class MovementHandler: IDisposable
     {
         private IInput _input;
 
@@ -10,7 +11,31 @@ namespace Assets.Homework4.Scripts
         {
             _input = input;
 
-            Debug.Log(_input.GetType());
+            _input.ClickDown += OnClickDown;
+            _input.ClickUp += OnClickUp;
+            _input.Drag += OnDrag;
+        }
+
+        public void Dispose()
+        {
+            _input.ClickDown -= OnClickDown;
+            _input.ClickUp -= OnClickUp;
+            _input.Drag -= OnDrag;
+        }
+
+        private void OnDrag(Vector3 position)
+        {
+            Debug.Log("Drag");
+        }
+
+        private void OnClickUp(Vector3 position)
+        {
+            Debug.Log("ClickUp");
+        }
+
+        private void OnClickDown(Vector3 position)
+        {
+            Debug.Log("ClickDown");
         }
     }
 }

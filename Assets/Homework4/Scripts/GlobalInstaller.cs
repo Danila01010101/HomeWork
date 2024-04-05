@@ -8,9 +8,9 @@ namespace Assets.Homework4.Scripts
         public override void InstallBindings()
         {
             if (SystemInfo.deviceType == DeviceType.Desktop)
-                Container.Bind<IInput>().To<DesctopInput>().AsSingle();
+                Container.BindInterfacesAndSelfTo<DesctopInput>().AsSingle();
             else
-                Container.Bind<IInput>().To<MobileInput>().AsSingle();
+                Container.BindInterfacesAndSelfTo<MobileInput>().AsSingle();
         }
     }
 }

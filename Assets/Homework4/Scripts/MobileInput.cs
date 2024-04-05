@@ -1,10 +1,34 @@
-﻿namespace Assets.Homework4.Scripts
+﻿using System;
+using UnityEngine;
+using Zenject;
+
+namespace Assets.Homework4.Scripts
 {
-    public class MobileInput : IInput
+    public class MobileInput : IInput, ITickable
     {
-        public void HandleInput()
+        public event Action<Vector3> ClickDown;
+        public event Action<Vector3> ClickUp;
+        public event Action<Vector3> Drag;
+
+        public void Tick()
         {
-            throw new System.NotImplementedException();
+            if (Input.touchCount > 0)
+            {
+                Touch touch = Input.GetTouch(0);
+
+                switch (touch.phase)
+                {
+                    case TouchPhase.Began:
+                        ClickDown?.Invoke(touch.position);
+                        break;
+                    case TouchPhase.Moved:
+                        Drag?.Invoke(touch.position);
+                        break;
+                    case TouchPhase.Ended:
+                        ClickUp?.Invoke(touch.position);
+                        break;
+                }
+            }
         }
     }
 }
